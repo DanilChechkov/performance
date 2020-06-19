@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Performance control
+GenericName=Performance control
+Comment=A small app for huge difference
+Categories=Utility;Settings;System;
+Exec=com.github.DanilChechkov.performance
+Icon=com.github.DanilChechkov.performance
+Terminal=false
+Type=Application
+Keywords=Performance;Control;Battery;
