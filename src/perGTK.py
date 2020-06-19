@@ -1,6 +1,8 @@
-#!/usr/bin/sudo python3
+#!/usr/bin/python3
 import gi
 import os
+import sys
+import subprocess
 
 gi.require_version("Gtk","3.0")
 from gi.repository import Gtk
@@ -31,6 +33,15 @@ def changeMode(mode):
             hostf = open('/sys/class/scsi_host/%s/link_power_management_policy'%host,'w')
             hostf.write(dicta[mode])  
 
+class auth:
+    def __init__(self):
+        self.window_is_hidden = False
+    
+    def passins(self,*args):
+        p = subprocess.Popen(['sudo', '-S'] + ['python3'] + sys.argv, stdin=subprocess.PIPE, stderr=subprocess.PIPE, universal_newlines=True)
+        p.communicate(pasbox.get_text() + '\n')
+        sys.exit(0)
+
 class Handler:
     def __init__(self):
         self.window_is_hidden = False
@@ -56,16 +67,29 @@ class Handler:
 ar = open('/sys/devices/system/cpu/cpu0/cpufreq/scaling_available_frequencies').readlines()[0].split()
 ar.sort()
 
-builder = Gtk.Builder()
-builder.add_from_file(path+'GTKper.glade')
-builder.connect_signals(Handler())
+if os.getuid() !=0: 
+    pb = Gtk.Builder()
+    pb.add_from_file(path+'PassDi.glade')
+    pb.connect_signals(auth())
+    paswin = pb.get_object('passwin')
+    pasbox = pb.get_object('passbox')
+    pasbut = pb.get_object('button1')
 
-window = builder.get_object('window1')
-sw1 = builder.get_object('sw1')
-sw2 = builder.get_object('sw2')
-sw3 = builder.get_object('sw3')
-sw2.set_active(True)
+    paswin.connect('destroy',Gtk.main_quit)
+    paswin.show_all()
+    Gtk.main()
+else:
+    builder = Gtk.Builder()
+    builder.add_from_file(path+'GTKper.glade')
 
-window.connect('destroy',Gtk.main_quit)
-window.show_all()
-Gtk.main()
+    builder.connect_signals(Handler())
+
+    window = builder.get_object('window1')
+    sw1 = builder.get_object('sw1')
+    sw2 = builder.get_object('sw2')
+    sw3 = builder.get_object('sw3')
+    sw2.set_active(True)
+
+    window.connect('destroy',Gtk.main_quit)
+    window.show_all()
+    Gtk.main()
