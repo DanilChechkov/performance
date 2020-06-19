@@ -10,7 +10,7 @@
     <property name="resizable">False</property>
     <property name="window_position">center</property>
     <property name="destroy_with_parent">True</property>
-    <property name="icon">../data/icons/64/com.github.DanilChechkov.performance.svg</property>
+    <property name="icon">../data/icons/128/com.github.DanilChechkov.performance.svg</property>
     <child type="titlebar">
       <placeholder/>
     </child>
