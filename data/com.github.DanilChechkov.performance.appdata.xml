@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright 2020 Danil Chechkov <DanilChechkov@icloud.com> -->
+<component type="desktop">
+  <id>com.github.DanilChechkov.performance</id>
+  <metadata_license>CC0</metadata_license>
+  <name>Performance control</name>
+  <summary>Small app for huge difference</summary>
+  <description>
+    <p>Just if you need maximum performance or battery life - now you can choose</p>
+  </description>
+</component>
