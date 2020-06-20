@@ -8,7 +8,7 @@
     <property name="can_focus">False</property>
     <property name="title" translatable="yes">Performance control</property>
     <property name="resizable">False</property>
-    <property name="window_position">center</property>
+    <property name="window_position">center-always</property>
     <property name="destroy_with_parent">True</property>
     <property name="icon">../data/icons/128/com.github.DanilChechkov.performance.svg</property>
     <child type="titlebar">
